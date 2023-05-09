@@ -4,6 +4,10 @@ Here is a fun little music making project. It started as an idea to emulate a ki
 
 Have fun with it! 
 
+## Deployed Website
+
+[Click Here](https://krsnamara.github.io/let-the-kids-play/) to visit deployed app! 
+
 ## Future enhancements: 
 
 -Have users login and add their own wav files
