@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="./style.css">
   <link rel="icon" href="https://fav.farm/🌶" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -64,34 +64,54 @@
     <audio data-key="79"  src=""></audio>
     <audio data-key="80"  src=""></audio>
 
-<script>
-  function playSound(e) {
-      let keyCode;
-      if (e.type === 'keydown') {
-        keyCode = e.keyCode;
-      } else if (e.type === 'click') {
-        keyCode = parseInt(this.getAttribute('data-key'));
-      } else {
-        return; // Stop function if the event type is neither keydown nor click
-      }
+    <!-- Play button for recorded audio -->
+    <button id="play-button">Play Recorded Audio</button>
 
-      const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
-      const key = document.querySelector(`.key[data-key="${keyCode}"]`);
-      if (!audio) return; // Stop function if audio element is not found
-      audio.currentTime = 0;
-      audio.play();
-      key.classList.add('playing');
-    }
+    <script>
+        function playSound(e) {
+            let keyCode;
+            if (e.type === 'keydown') {
+                keyCode = e.keyCode;
+            } else if (e.type === 'click') {
+                keyCode = parseInt(this.getAttribute('data-key'));
+            } else {
+                return; // Stop function if the event type is neither keydown nor click
+            }
 
-    function removeTransition(e) {
-      if (e.propertyName !== 'transform') return; // Skip if it's not a transform
-      this.classList.remove('playing');
-    }
+            const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+            const key = document.querySelector(`.key[data-key="${keyCode}"]`);
+            if (!audio) return; // Stop function if audio element is not found
+            audio.currentTime = 0;
+            audio.play();
+            key.classList.add('playing');
+        }
 
-    const keys = document.querySelectorAll('.key');
-    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-    window.addEventListener('keydown', playSound);
-    keys.forEach(key => key.addEventListener('click', playSound));
-</script>
+        function removeTransition(e) {
+            if (e.propertyName !== 'transform') return; // Skip if it's not a transform
+            this.classList.remove('playing');
+        }
+
+        const keys = document.querySelectorAll('.key');
+        keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+        window.addEventListener('keydown', playSound);
+        keys.forEach(key => key.addEventListener('click', playSound));
+
+        // Retrieve the recorded audio from local storage
+        const recordedAudioUrl = localStorage.getItem("recordedAudio");
+
+        // Create an audio element to play the recorded audio
+        const audioPlayer = new Audio(recordedAudioUrl);
+
+        // Function to handle the button click and play the recorded audio
+        function playRecordedAudio() {
+            audioPlayer.currentTime = 0;
+            audioPlayer.play();
+        }
+
+        // Add event listener to the play button
+        const playButton = document.getElementById("play-button");
+        playButton.addEventListener("click", playRecordedAudio);
+        
+    </script>
 </body>
 </html>
