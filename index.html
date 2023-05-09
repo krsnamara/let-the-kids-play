@@ -68,21 +68,32 @@
 
 <script>
   function playSound(e) {
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-    if(!audio) return; // stop function from running all together
-    audio.currentTime = 0; // rewinds the audio to begining of clip
-    audio.play();
-    key.classList.add('playing');
-  }
-  function removeTransition(e) {
-    if(e.propertyName !== 'transform') return; //skip if its not a transform
-    this.classList.remove('playing');
-  }
-  
-  const keys = document.querySelectorAll('.key');
-  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-  window.addEventListener('keydown', playSound);
+      let keyCode;
+      if (e.type === 'keydown') {
+        keyCode = e.keyCode;
+      } else if (e.type === 'click') {
+        keyCode = parseInt(this.getAttribute('data-key'));
+      } else {
+        return; // Stop function if the event type is neither keydown nor click
+      }
+
+      const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+      const key = document.querySelector(`.key[data-key="${keyCode}"]`);
+      if (!audio) return; // Stop function if audio element is not found
+      audio.currentTime = 0;
+      audio.play();
+      key.classList.add('playing');
+    }
+
+    function removeTransition(e) {
+      if (e.propertyName !== 'transform') return; // Skip if it's not a transform
+      this.classList.remove('playing');
+    }
+
+    const keys = document.querySelectorAll('.key');
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+    window.addEventListener('keydown', playSound);
+    keys.forEach(key => key.addEventListener('click', playSound));
 </script>
 </body>
 </html>
