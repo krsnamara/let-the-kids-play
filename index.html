@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kids Piano Time</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="https://fav.farm/🌶" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Lets the Kids Play</h1>
+        <div class="piano-layer-1">
+            <div data-key="65" class="key piano-key-1"><p style="text-align: center; margin-top: 120px;">a</p></div>
+            <div data-key="90" class="key piano-key-2"><p style="text-align: center; margin-top: 120px;">z</p></div>
+            <div data-key="83" class="key piano-key-3"><p style="text-align: center; margin-top: 120px;" style="text-align: center; margin-top: 120px;">s</p></div>
+            <div data-key="88" class="key piano-key-4"><p style="text-align: center; margin-top: 120px;">x</p></div>
+            <div data-key="67" class="key piano-key-5"><p style="text-align: center; margin-top: 120px;">c</p></div>
+            <div data-key="86" class="key piano-key-6"><p style="text-align: center; margin-top: 120px;">v</p></div>
+            <div data-key="66" class="key piano-key-7"><p style="text-align: center; margin-top: 120px;">b</p></div>
+            <div data-key="78" class="key piano-key-8"><p style="text-align: center; margin-top: 120px;">n</p></div>
+            <div data-key="77" class="key piano-key-9"><p style="text-align: center; margin-top: 120px;">m</p></div>
+            <div data-key="188" class="key piano-key-10"><p style="text-align: center; margin-top: 120px;">,</p></div>
+            <div data-key="190" class="key piano-key-11"><p style="text-align: center; margin-top: 120px;">.</p></div>
+            <div data-key="186" class="key piano-key-12"><p style="text-align: center; margin-top: 120px;">;</p></div>
+            <div data-key="191" class="key piano-key-13"><p style="text-align: center; margin-top: 120px;">/</p></div>
+            <div data-key="222" class="key piano-key-14"><p style="text-align: center; margin-top: 120px;">'</p></div>
+            <div data-key="69" class="key piano-blk-key-1"><p style="color:white; text-align: center;">e</p></div>
+            <div data-key="68" class="key piano-blk-key-2"><p style="color:white; text-align: center;">d</p></div>
+            <div data-key="70" class="key piano-blk-key-3"><p style="color:white; text-align: center;">f</p></div>
+            <div data-key="71" class="key piano-blk-key-4"><p style="color:white; text-align: center;">g</p></div>
+            <div data-key="72" class="key piano-blk-key-5"><p style="color:white; text-align: center;">h</p></div>
+            <div data-key="74" class="key piano-blk-key-6"><p style="color:white; text-align: center;">j</p></div>
+            <div data-key="75" class="key piano-blk-key-7"><p style="color:white; text-align: center;">k</p></div>
+            <div data-key="76" class="key piano-blk-key-8"><p style="color:white; text-align: center;">l</p></div>
+            <div data-key="79" class="key piano-blk-key-9"><p style="color:white; text-align: center;">o</p></div>
+            <div data-key="80" class="key piano-blk-key-10"><p style="color:white; text-align: center;">p</p></div>
+        </div>
+    </div>
+    <audio data-key="65" src="sounds/clap.wav"></audio>
+    
+    <audio data-key="65"  src="sounds/18_StroppySub_C2_119_SP.wav"></audio>
+    <audio data-key="90"  src="sounds/38_Cm_SharpLFO_02_4_SP.wav"></audio>
+    <audio data-key="83"  src="sounds/130_Bm_WaveBells_SP_110_01.wav"></audio>
+    <audio data-key="88"  src="sounds/175_Fm_FltrPnchLd_SP_196_03.wav"></audio>
+    <audio data-key="67"  src="sounds/Am_GuitarSwellNote_173_SP.wav"></audio>
+    <audio data-key="86"  src="sounds/Bm_StabSynth_01_574.wav"></audio>
+    <audio data-key="66"  src="sounds/C_VintageWashedSynth_852.wav"></audio>
+    <audio data-key="78"  src="sounds/C_DubNote_21_507.wav"></audio>
+    <audio data-key="77"  src="sounds/Dm_NoisyPluck_SP_02_406.wav"></audio>
+    <audio data-key="188" src="sounds/Dm_StabSynth_01_622.wav"></audio>
+    <audio data-key="190" src="sounds/F_DarkAlleySynth_01_596.wav"></audio>
+    <audio data-key="186" src="sounds/F_AestheticSynth_03_546.wav"></audio>
+    <audio data-key="191" src="sounds/boom.wav"></audio>
+    <audio data-key="222" src="sounds/clap.wav"></audio>
+    <audio data-key="69"  src="sounds/hihat.wav"></audio>
+    <audio data-key="68"  src="sounds/kick.wav"></audio>
+    <audio data-key="70"  src="sounds/openhat.wav"></audio>
+    <audio data-key="71"  src="sounds/ride.wav"></audio>
+    <audio data-key="72"  src="sounds/snare.wav"></audio>
+    <audio data-key="74"  src="sounds/tink.wav"></audio>
+    <audio data-key="75"  src="sounds/tom.wav"></audio>
+    <audio data-key="76"  src=""></audio>
+    <audio data-key="79"  src=""></audio>
+    <audio data-key="80"  src=""></audio>
+
+<script>
+  function playSound(e) {
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    if(!audio) return; // stop function from running all together
+    audio.currentTime = 0; // rewinds the audio to begining of clip
+    audio.play();
+    key.classList.add('playing');
+  }
+  function removeTransition(e) {
+    if(e.propertyName !== 'transform') return; //skip if its not a transform
+    this.classList.remove('playing');
+  }
+  
+  const keys = document.querySelectorAll('.key');
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  window.addEventListener('keydown', playSound);
+</script>
+</body>
+</html>
