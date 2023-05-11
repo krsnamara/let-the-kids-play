@@ -18,9 +18,11 @@ Have fun with it!
 - Git/Github
 
 ***
-## Deployed Website
+## Inspiration for Keyboard
 ![inspiration](imgs/inspo.png)
-<br>   
+<br>
+
+## Deployed version   
 ![deployed](imgs/deployed.png)
 <br>   
 
